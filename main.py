@@ -158,6 +158,8 @@ def menu():
             mostrarProducto()
         elif opcion == 3:
             registrarVenta()
+        elif opcion == 4:
+            exit()
         
 
 # Llama 
