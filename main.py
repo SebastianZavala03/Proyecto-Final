@@ -43,6 +43,22 @@ stockVestidos = [
 ]
 
 
+
+def registrarVenta():
+    nombreCliente = input("Nombre del cliente: ")
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Se crea una función para mostrar el catálogo.
 def mostrarCatalogo():
 
