@@ -42,20 +42,58 @@ stockVestidos = [
     30
 ]
 # Se crea una función para registrar la venta de un producto.
+
 def registrarVenta():
     nombreCliente = input("Nombre del cliente: ")
-    codigoVestido = int(input("Código del vestido: "))
+    codigoVestido = int(input("Codigo del vestido: "))
+    cantidadVestidos = int(input("Cantidad: "))
+ 
     posicionVestido = -1
-
-for i in range(len(codigosVestidos)):
-
-    if codigosVestidos[i] == codigoVestido:
-
-        posicionVestido = i
-
-if posicionVestido == -1:
-
-    print("El código ingresado no existe")
+    for i in range(len(codigosVestidos)):
+        if codigosVestidos[i] == codigoVestido:
+            posicionVestido = i
+ 
+    # valores iniciales por si la venta no se puede completar
+    precioSinDescuento = 0
+    precioFinal = 0
+ 
+    # se valida en orden: codigo, cantidad y stock, antes de vender
+    if posicionVestido == -1:
+        print("El codigo ingresado no existe")
+ 
+    elif cantidadVestidos <= 0:
+        print("La cantidad tiene que ser mayor a 0")
+ 
+    elif cantidadVestidos > stockVestidos[posicionVestido]:
+        print("No hay stock suficiente, solo quedan", stockVestidos[posicionVestido])
+ 
+    else:
+        # precio del vestido multiplicado por la cantidad, sin descuento todavia
+        precioSinDescuento = preciosVestidos[posicionVestido] * cantidadVestidos
+ 
+        # la vendedora decide si le da descuento o no, hasta un maximo de 50%
+        descuentoVenta = float(input("Puede agregar un descuento de hasta 50% (ingrese 0 si no aplica): "))
+ 
+        if descuentoVenta > 50:
+            # si pide mas de 50%, no se registra la venta
+            print("Solo se permite un descuento maximo de 50%")
+ 
+        else:
+            # se calcula cuanto vale el descuento y se le resta al precio
+            precioFinal = precioSinDescuento - (precioSinDescuento * descuentoVenta / 100)
+ 
+            # se descuenta del stock lo que se acaba de vender
+            stockVestidos[posicionVestido] = stockVestidos[posicionVestido] - cantidadVestidos
+ 
+            print("\nVenta registrada con exito")
+            print("Vestido:", nombresVestidos[posicionVestido])
+            print("Precio unitario: S/.", preciosVestidos[posicionVestido])
+            print("Cantidad:", cantidadVestidos)
+            print("Precio sin descuento: S/.", round(precioSinDescuento, 2))
+            print("Descuento:", descuentoVenta, "%")
+            print("Precio con descuento: S/.", round(precioFinal, 2))
+ 
+    input("\nPresione Enter para continuar")
 
 
 
