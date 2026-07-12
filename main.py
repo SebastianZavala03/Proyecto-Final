@@ -44,7 +44,7 @@ stockVestidos = [
 # Se crea una función para registrar la venta de un producto.
 def registrarVenta():
     nombreCliente = input("Nombre del cliente: ")
-
+    codigoVestido = int(input("Código del vestido: "))
 
 
 
