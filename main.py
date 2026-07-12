@@ -71,6 +71,37 @@ def mostrarCatalogo():
     input("Presione Enter para continuar")
 
 
+
+def mostrarProducto():
+
+     #El usuario ingresa el código del vestido.
+    codigoVestido = int(input("Ingrese el código del vestido: "))
+
+     #Se inicializa la variable en -1 porque eso da a indicar que el valor no se a encontrado.
+    posicionVestido = -1
+
+    #Recorre la lista de los productos por medio del codigo de vestido 
+    for i in range(len(codigosVestidos)):
+
+        # Si el código ingresado es igual al código de la lista,
+        # se guarda la posición donde fue encontrado.
+        if codigosVestidos[i] == codigoVestido:
+            posicionVestido = i
+
+    #Realizamos una condicional que indique si esque el codigo no fue encontrado nos mande un mensaje y en caso si se encuentre recorre el producto.
+    if posicionVestido == -1:
+        print("Ese código que ingresaste no existe")
+    else:
+        print("Vestido:", nombresVestidos[posicionVestido])
+        print("Descripción:", descripcionesVestidos[posicionVestido])
+        print("Precio:", preciosVestidos[posicionVestido])
+        print("Stock:", stockVestidos[posicionVestido])
+
+    input("Presione Enter para continuar")
+
+
+
+
 # Función que muestra el menú
 def menu():
 
@@ -91,6 +122,8 @@ def menu():
 
         if opcion == 1:
             mostrarCatalogo()
+        elif opcion == 2:
+            mostrarProducto()
         
 
 # Llama 
