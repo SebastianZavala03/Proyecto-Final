@@ -42,3 +42,24 @@ stockVestidos = [
     20,
     30
 ]
+
+
+# Función que muestra el menú
+def menu():
+    # Variable que almacena la opcion a eligir                      
+    opcion = 0                  
+
+    # Repite el menú mientras el usuario no seleccione la opción 4 (Salir).
+    while opcion != 4:          
+
+        print("MIRIAN ATELIER")  
+        print("1. Ver catálogo")               
+        print("2. Buscar vestido")            
+        print("3. Registrar venta")           
+        print("4. Salir")                     
+
+        # Solicita al cliente una opción por terminal, la convierte a entero y la guarda en la variable opcion.
+        opcion = int(input("Elige una opción: "))  
+
+#Llama a la funcion
+menu()  
