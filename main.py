@@ -45,9 +45,17 @@ stockVestidos = [
 def registrarVenta():
     nombreCliente = input("Nombre del cliente: ")
     codigoVestido = int(input("Código del vestido: "))
+    posicionVestido = -1
 
+for i in range(len(codigosVestidos)):
 
+    if codigosVestidos[i] == codigoVestido:
 
+        posicionVestido = i
+
+if posicionVestido == -1:
+
+    print("El código ingresado no existe")
 
 
 
