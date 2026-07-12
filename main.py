@@ -50,8 +50,7 @@ def registrarVenta():
 
 
 
-def registrarVenta():
-    nombreCliente = input("Nombre del cliente: ")
+
 
 
 
