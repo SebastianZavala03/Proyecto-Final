@@ -1,7 +1,7 @@
 # Listas
 # Datos de los productos
 codigosVestidos = [1, 2, 3, 4, 5, 6]
- 
+
 # Datos de tipo cadena
 nombresVestidos = [
     "Vestido rojo",
@@ -11,7 +11,7 @@ nombresVestidos = [
     "Vestido turquesa",
     "Vestido negro"
 ]
- 
+
 # Datos de tipo cadena
 descripcionesVestidos = [
     "Perfecto para Salir",
@@ -21,7 +21,7 @@ descripcionesVestidos = [
     "Perfecto para un día de otoño",
     "Perfecto para gala"
 ]
- 
+
 # Datos de tipo float
 preciosVestidos = [
     75.00,
@@ -31,7 +31,7 @@ preciosVestidos = [
     65.20,
     190.50
 ]
- 
+
 # Datos de tipo entero
 stockVestidos = [
     10,
@@ -41,76 +41,42 @@ stockVestidos = [
     20,
     30
 ]
- 
- 
 # Se crea una función para registrar la venta de un producto.
+
 def registrarVenta():
     nombreCliente = input("Nombre del cliente: ")
     codigoVestido = int(input("Codigo del vestido: "))
     cantidadVestidos = int(input("Cantidad: "))
  
     posicionVestido = -1
- 
-    # Recorre la lista de codigos buscando el que ingreso el cliente.
-    for i in range(len(codigosVestidos)):
-        if codigosVestidos[i] == codigoVestido:
-            posicionVestido = i
- 
-    # valores iniciales por si la venta no se llega a registrar
-    precioSinDescuento = 0
-    precioFinal = 0
- 
-    # Se valida en orden: que el codigo exista, que la cantidad sea valida
-    # y que haya stock suficiente antes de continuar con la venta.
-    if posicionVestido == -1:
-        print("El código ingresado no existe")
- 
-    elif cantidadVestidos <= 0:
-        print("La cantidad tiene que ser mayor a 0")
- 
-    elif cantidadVestidos > stockVestidos[posicionVestido]:
-        print("No hay stock suficiente, solo quedan", stockVestidos[posicionVestido])
- 
-    else:
-        # precio del vestido multiplicado por la cantidad, sin descuento
-        precioSinDescuento = preciosVestidos[posicionVestido] * cantidadVestidos
- 
-        # la vendedora decide si le da descuento o no, hasta un maximo de 50%
-        descuentoVenta = float(input("Puede agregar un descuento de hasta 50% (ingrese 0 si no aplica): "))
- 
-        if descuentoVenta > 50:
-            print("Solo se permite un descuento maximo de 50%")
- 
-        else:
-            # se calcula el precio final restando el descuento
-            precioFinal = precioSinDescuento - (precioSinDescuento * descuentoVenta / 100)
- 
-            # se descuenta del stock lo que se acaba de vender
-            stockVestidos[posicionVestido] = stockVestidos[posicionVestido] - cantidadVestidos
- 
-            print("\nVenta registrada con exito")
-            print("Cliente:", nombreCliente)
-            print("Vestido:", nombresVestidos[posicionVestido])
-            print("Precio unitario: S/.", preciosVestidos[posicionVestido])
-            print("Cantidad:", cantidadVestidos)
-            print("Precio sin descuento: S/.", round(precioSinDescuento, 2))
-            print("Descuento:", descuentoVenta, "%")
-            print("Precio con descuento: S/.", round(precioFinal, 2))
- 
-    input("Presione Enter para continuar")
- 
- 
+
+for i in range(len(codigosVestidos)):
+
+    if codigosVestidos[i] == codigoVestido:
+
+        posicionVestido = i
+
+if posicionVestido == -1:
+
+    print("El código ingresado no existe")
+
+
+
+
+
+
 # Se crea una función para mostrar el catálogo.
 def mostrarCatalogo():
- 
+
     # Muestra el título del catálogo.
     print("CATÁLOGO DE VESTIDOS")
- 
+
     # Se utiliza un ciclo for para recorrer todos los productos de la lista.
     # La función len(codigosVestidos) obtiene la cantidad total de productos registrados.
     # Luego, range() genera las posiciones desde el indice 0 hasta el último producto de la lista.
+
     for i in range(len(codigosVestidos)):
- 
+
         # Se muestran los datos de cada producto utilizando la misma posición
         # de las listas paralelas.
         print(
@@ -122,29 +88,29 @@ def mostrarCatalogo():
             "- Stock:",
             stockVestidos[i]
         )
- 
+
     # Espera que el usuario presione Enter para regresar al menú.
     input("Presione Enter para continuar")
- 
- 
+
+
+
 def mostrarProducto():
- 
-    # El usuario ingresa el código del vestido.
+
+     #El usuario ingresa el código del vestido.
     codigoVestido = int(input("Ingrese el código del vestido: "))
- 
-    # Se inicializa la variable en -1 porque eso da a indicar que el valor no se ha encontrado.
+
+     #Se inicializa la variable en -1 porque eso da a indicar que el valor no se a encontrado.
     posicionVestido = -1
- 
-    # Recorre la lista de los productos por medio del codigo de vestido
+
+    #Recorre la lista de los productos por medio del codigo de vestido 
     for i in range(len(codigosVestidos)):
- 
+
         # Si el código ingresado es igual al código de la lista,
         # se guarda la posición donde fue encontrado.
         if codigosVestidos[i] == codigoVestido:
             posicionVestido = i
- 
-    # Realizamos una condicional que indique si es que el codigo no fue encontrado
-    # nos mande un mensaje y en caso si se encuentre muestre los datos del producto.
+
+    #Realizamos una condicional que indique si esque el codigo no fue encontrado nos mande un mensaje y en caso si se encuentre recorre el producto.
     if posicionVestido == -1:
         print("Ese código que ingresaste no existe")
     else:
@@ -152,28 +118,30 @@ def mostrarProducto():
         print("Descripción:", descripcionesVestidos[posicionVestido])
         print("Precio:", preciosVestidos[posicionVestido])
         print("Stock:", stockVestidos[posicionVestido])
- 
+
     input("Presione Enter para continuar")
- 
- 
+
+
+
+
 # Función que muestra el menú
 def menu():
- 
+
     # Variable que almacena la opción elegida por el usuario.
     opcion = 0
- 
+
     # Repite el menú mientras el usuario no seleccione la opcion 4.
     while opcion != 4:
- 
+
         print("MIRIAN ATELIER")
         print("1. Ver catálogo")
         print("2. Buscar vestido")
         print("3. Registrar venta")
         print("4. Salir")
- 
+
         # Solicita al usuario una opcion que este dentro del menu
         opcion = int(input("Elige una opción: "))
- 
+
         if opcion == 1:
             mostrarCatalogo()
         elif opcion == 2:
@@ -181,10 +149,8 @@ def menu():
         elif opcion == 3:
             registrarVenta()
         elif opcion == 4:
-            print("Gracias por usar el sistema")
-        else:
-            print("Opción no válida")
- 
- 
-# Llama al menú para iniciar el programa
+            exit()
+        
+
+# Llama 
 menu()
